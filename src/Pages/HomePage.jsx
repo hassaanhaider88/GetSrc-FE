@@ -6,6 +6,7 @@ import TabRadio from "../Components/TabRadio";
 import NoFound from "../Components/NoFound";
 import { useAuth } from "../AuthContext";
 import { Helmet } from "react-helmet";
+import FirstData from "../DummyData/File.json";
 
 const HomePage = () => {
   const [searchVal, setSearchVal] = useState("");
@@ -13,6 +14,11 @@ const HomePage = () => {
 
   const { DummyFiles, setFilesCopy, FilesCopy, FetchLoading } = useAuth();
 
+  useEffect(() => {
+    setFilesCopy(FirstData);
+  }, []);
+
+  console.log(FilesCopy)
   // Filter files on search input
   useEffect(() => {
     if (!DummyFiles || DummyFiles.length === 0) return;
@@ -29,84 +35,84 @@ const HomePage = () => {
 
   return (
     <>
-    <Helmet>
-        <title>Home | GetSrc  | HMK CodeWeb</title>
+      <Helmet>
+        <title>Home | GetSrc | HMK CodeWeb</title>
         <meta
           name="description"
           content="Learn about GetSrc - the user can access to all uploaded media and Copy and download other's Media"
         />
       </Helmet>
-    <section className="w-full min-h-screen px-10 py-10">
-      {FetchLoading ? (
-        <div role="status" aria-live="polite" className="text-center text-xl">
-          Loading...
-        </div>
-      ) : (
-        <div>
-          {/* Search Bar */}
-          <form
-            role="search"
-            aria-label="Search files"
-            className="SearchComponent w-[70%] gap-3 justify-center items-center bg-[#F6F5FB] py-2 px-3 mx-auto flex rounded-[40px]"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <IoMdSearch
-              onClick={() => {}}
-              className="block cursor-pointer hover:scale-90 duration-300 transition-all"
-              size={20}
+      <section className="w-full min-h-screen px-10 py-10">
+        {FetchLoading ? (
+          <div role="status" aria-live="polite" className="text-center text-xl">
+            Loading...
+          </div>
+        ) : (
+          <div>
+            {/* Search Bar */}
+            <form
+              role="search"
               aria-label="Search files"
-            />
-            <input
-              type="search"
-              value={searchVal}
-              onChange={(e) => setSearchVal(e.target.value)}
-              className="block w-full outline-none bg-transparent"
-              placeholder="Search files..."
-              aria-label="Search files by name"
-            />
-            {searchVal && (
-              <RxCross2
-                onClick={() => setSearchVal("")}
+              className="SearchComponent w-[70%] gap-3 justify-center items-center bg-[#F6F5FB] py-2 px-3 mx-auto flex rounded-[40px]"
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <IoMdSearch
+                onClick={() => {}}
+                className="block cursor-pointer hover:scale-90 duration-300 transition-all"
                 size={20}
-                className="cursor-pointer font-bold hover:scale-90 duration-300 transition-all"
-                aria-label="Clear search input"
+                aria-label="Search files"
               />
-            )}
-          </form>
-
-          {/* Tabs */}
-          <div className="w-full pt-6">
-            <TabRadio
-              SelectedTab={SelectedTab}
-              setSelectedTab={setSelectedTab}
-            />
-          </div>
-
-          {/* Files List */}
-          <div
-            className={`${
-              FilesCopy?.length > 0
-                ? "grid md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 gird-col-1"
-                : "flex"
-            } ResentFiles py-10 w-full justify-center items-center flex-col gap-5`}
-            role="list"
-            aria-label="Filtered media files"
-          >
-            {FilesCopy?.length > 0 ? (
-              FilesCopy.map((file, idx) => (
-                <SingleFileHome
-                  key={file._id || idx}
-                  FileData={file}
-                  SelectedTab={SelectedTab}
+              <input
+                type="search"
+                value={searchVal}
+                onChange={(e) => setSearchVal(e.target.value)}
+                className="block w-full outline-none bg-transparent"
+                placeholder="Search files..."
+                aria-label="Search files by name"
+              />
+              {searchVal && (
+                <RxCross2
+                  onClick={() => setSearchVal("")}
+                  size={20}
+                  className="cursor-pointer font-bold hover:scale-90 duration-300 transition-all"
+                  aria-label="Clear search input"
                 />
-              ))
-            ) : (
-              <NoFound searchVal={searchVal} />
-            )}
+              )}
+            </form>
+
+            {/* Tabs */}
+            <div className="w-full pt-6">
+              <TabRadio
+                SelectedTab={SelectedTab}
+                setSelectedTab={setSelectedTab}
+              />
+            </div>
+
+            {/* Files List */}
+            <div
+              className={`${
+                FilesCopy?.length > 0
+                  ? "grid md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 gird-col-1"
+                  : "flex"
+              } ResentFiles py-10 w-full justify-center items-center flex-col gap-5`}
+              role="list"
+              aria-label="Filtered media files"
+            >
+              {FilesCopy?.length > 0 ? (
+                FilesCopy.map((file, idx) => (
+                  <SingleFileHome
+                    key={file._id || idx}
+                    FileData={file}
+                    SelectedTab={SelectedTab}
+                  />
+                ))
+              ) : (
+                <NoFound searchVal={searchVal} />
+              )}
+            </div>
           </div>
-        </div>
-      )}
-    </section>
+        )}
+      </section>
     </>
   );
 };
