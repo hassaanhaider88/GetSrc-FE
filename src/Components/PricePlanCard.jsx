@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const PricePlanCard = ({ Cdata }) => {
   const handleUpgrade = () => {
     window.open(
-      "https://wa.me/923437117831?text=AssalamoAlikum,%20I%20want%20to%20upgrade%20to%20Pro%20Plan",
+      "https://wa.me/923437117831?text=AssalamoAlikum,%20I%20want%20to%20upgrade%20to%20Pro%20Plan%20For%20GetSrc%20🥰",
       "_blank",
       "noopener noreferrer"
     );

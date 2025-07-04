@@ -17,6 +17,7 @@ import UpgradePage from "./Pages/UpgradePage";
 import UploadPage from "./Pages/UploadPage";
 import LoginForm from "./Pages/LoginForm";
 import AboutUs from "./Pages/AboutUs";
+import PageNotFound from "./Pages/PageNotFound";
 import { ToastContainer } from "react-toastify";
 import { useAuth } from "./AuthContext";
 import "./App.css";
@@ -104,7 +105,7 @@ const App = () => {
               <Route path="/about-us" element={<AboutUs />}  />
               <Route
                 path="*"
-                element={<div role="alert">404 - Page Not Found</div>}
+                element={<PageNotFound/>}
               />
             </Routes>
           </main>

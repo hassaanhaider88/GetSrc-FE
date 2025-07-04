@@ -14,7 +14,7 @@ const useUserStore = create((set, get) => ({
   signUp: async (fullName, email, password) => {
     set({ loading: true, error: null });
     try {
-      const res = await axios.post(`${GetSrcBE}/sign-up`, {
+      const res = await axios.post(`${GetSrcBE}/api/user/sign-up`, {
         FullName: fullName,
         Email: email,
         password,
@@ -35,7 +35,7 @@ const useUserStore = create((set, get) => ({
   signIn: async (email, password) => {
     set({ loading: true, error: null });
     try {
-      const res = await axios.post(`${GetSrcBE}/sign-in`, {
+      const res = await axios.post(`${GetSrcBE}/api/user/sign-in`, {
         Email: email,
         password,
       });

@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { FaDeleteLeft } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import GetSrcBE from '../../API.js'
-import React from "react";
+
 
 const SingleFileInfo = ({ FileData, Length, SelectedTab }) => {
   const navigate = useNavigate();
@@ -14,9 +14,8 @@ const SingleFileInfo = ({ FileData, Length, SelectedTab }) => {
     if (!isConfirmed) return;
 
     try {
-      const res = await fetch(`${GetSrcBE}/api/file/${FileData._id}`, {
-        method: "DELETE",
-      });
+      console.log(FileData._id)
+      const res = await fetch(`${GetSrcBE}/api/file/${FileData._id}`);
       const data = await res.json();
 
       if (!data.success) {

@@ -1,3 +1,3 @@
- const GetSrcBE = 'http://localhost:3000'
+ const GetSrcBE = 'https://getsrc-be.onrender.com'
 
  export default GetSrcBE

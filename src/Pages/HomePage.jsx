@@ -36,7 +36,7 @@ const HomePage = () => {
           content="Learn about GetSrc - the user can access to all uploaded media and Copy and download other's Media"
         />
       </Helmet>
-    <section className="w-full min-h-screen px-20 py-10">
+    <section className="w-full min-h-screen px-10 py-10">
       {FetchLoading ? (
         <div role="status" aria-live="polite" className="text-center text-xl">
           Loading...

@@ -59,7 +59,7 @@ const Profile = () => {
     if (!user) return;
 
     async function fetchData() {
-      const res = await fetch(`${GetSrcBE}api/user/${user._id}`);
+      const res = await fetch(`${GetSrcBE}/api/user/${user._id}`);
       const result = await res.json();
       if (result?.succuss) {
         const data = result.data;
