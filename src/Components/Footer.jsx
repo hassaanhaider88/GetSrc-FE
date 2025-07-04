@@ -7,6 +7,7 @@ import { BiLogoNetlify } from "react-icons/bi";
 import { FaGithub } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import axios from "axios";
+import GetSrcBE from "../../API";
 
 const FooterCom = () => {
   const footerRef = useRef(null);
@@ -22,7 +23,7 @@ const FooterCom = () => {
     if (!EmailVal.includes("@")) return alert("Valid email enter karein");
     setIsEmailSend(true);
       const res = await fetch(
-        `http://localhost:3000/api/save-email?email=${EmailVal}`
+        `${GetSrcBE}/api/save-email?email=${EmailVal}`
       );
 
       const data = await res.json(); // Optional: check response
