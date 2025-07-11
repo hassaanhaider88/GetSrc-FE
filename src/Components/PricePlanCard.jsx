@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 
 const PricePlanCard = ({ Cdata }) => {
   const handleUpgrade = () => {
+    var User = JSON.parse(localStorage.getItem("UserData"));
     window.open(
-      "https://wa.me/923437117831?text=AssalamoAlikum,%20I%20want%20to%20upgrade%20to%20Pro%20Plan%20For%20GetSrc%20🥰",
+      `https://wa.me/923437117831?text=AssalamoAlikum,%20I%20want%20to%20upgrade%20to%20Pro%20Plan%20For%20GetURI%20With%20UserId%20${User._id}%20And%20Name%20${User.full_name}`,
       "_blank",
       "noopener noreferrer"
     );
@@ -69,7 +70,7 @@ const PricePlanCard = ({ Cdata }) => {
         <button
           onClick={handleUpgrade}
           title="Message me privately on WhatsApp"
-          className="mt-10 flex items-center justify-center gap-2 rounded-lg border border-white/20 px-6 py-3 font-medium text-gray-800 transition-all duration-300 ease-in-out hover:scale-95 hover:border-white/40 hover:shadow-md hover:bg-white/5"
+          className="mt-10 mx-auto flex items-center justify-center gap-2 rounded-lg border border-white/20 px-6 py-3 font-medium text-gray-800 transition-all duration-300 ease-in-out hover:scale-95 hover:border-white/40 hover:shadow-md hover:bg-white/5"
           aria-label="Upgrade to Pro Plan"
         >
           Get Pro Plan

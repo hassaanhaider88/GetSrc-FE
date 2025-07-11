@@ -13,7 +13,7 @@ const UpgradePage = () => {
         />
       </Helmet>
     <section className="w-full min-h-screen py-10 px-4 md:px-10 flex flex-col items-center">
-      <h1 className="text-center text-3xl md:text-4xl font-extrabold leading-tight tracking-tight text-gray-900 mb-6">
+      <h1 className="text-center ImagerFont text-3xl md:text-4xl font-extrabold leading-tight tracking-tight text-gray-900 mb-6">
         Supercharge Your Experience —
         <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-[#4ED7DD] mx-2">
           Go Pro

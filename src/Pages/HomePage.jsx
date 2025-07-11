@@ -15,12 +15,13 @@ const HomePage = () => {
   const { DummyFiles, setFilesCopy, FilesCopy, FetchLoading } = useAuth();
 
   useEffect(() => {
-    if (!FilesCopy) {
-      set(FirstData);
+    if (DummyFiles && DummyFiles.length > 0) {
+      setFilesCopy(DummyFiles);
     } else {
-      return;
+      setFilesCopy(FirstData);
     }
-  }, []);
+  }, [DummyFiles]);
+  
   FilesCopy;
   console.log(FilesCopy);
   // Filter files on search input

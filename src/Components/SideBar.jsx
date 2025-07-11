@@ -19,7 +19,7 @@ const SideBar = ({ IsideBarShown }) => {
     <aside
       className={`${
         IsideBarShown ? "flex" : "hidden"
-      } transition-all duration-300 h-screen sticky top-0 pb-5 shadow-md border-r border-gray-200 flex-col justify-between bg-white z-50`}
+      } transition-all duration-300 ImagerFont h-screen sticky top-0 pb-5 shadow-md border-r border-gray-200 flex-col justify-between bg-white z-50`}
       aria-label="Main sidebar navigation"
     >
       {/* Logo */}
