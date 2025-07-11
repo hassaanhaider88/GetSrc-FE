@@ -1,15 +1,15 @@
 ```markdown
-# GetSrc – Upload & Host Images & Videos Instantly
+# GetURI – Upload & Host Images & Videos Instantly
 
-**GetSrc** is a powerful, developer-focused platform to **upload, host, and manage images and videos** effortlessly. Whether you're building websites or web apps, GetSrc gives you instant CDN-powered links ready to embed.
+**GetURI** is a powerful, developer-focused platform to **upload, host, and manage images and videos** effortlessly. Whether you're building websites or web apps, GetUri gives you instant CDN-powered links ready to embed.
 
-![Banner](https://getsrc.com/banner-preview.png)
+![Banner](https://getUri.com/banner-preview.png)
 
 ---
 
 ## 🌐 Live Demo
 
-👉 [Visit GetSrc](https://getsrc.com/)
+👉 [Visit GetUri](https://getUri.com/)
 
 ---
 
@@ -39,13 +39,13 @@
 
 | Home Page                                | Dashboard                                     | Profile                                     |
 | ---------------------------------------- | --------------------------------------------- | ------------------------------------------- |
-| ![](https://getsrc.com/screens/home.png) | ![](https://getsrc.com/screens/dashboard.png) | ![](https://getsrc.com/screens/profile.png) |
+| ![](https://getUri.com/screens/home.png) | ![](https://getUri.com/screens/dashboard.png) | ![](https://getUri.com/screens/profile.png) |
 ```
 
 ## 📁 Folder Structure
 
 ```
-getsrc/
+getUri/
 ├── public/
 │   └── index.html
 ├── src/
