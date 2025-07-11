@@ -2,7 +2,7 @@ const TabRadio = ({ SelectedTab, setSelectedTab }) => {
   const tabs = ["All", "Images", "Videos", "GIFs"];
 
   return (
-    <div className="w-full flex justify-center items-center mt-6">
+    <div className="w-full ImagerFont flex justify-center items-center mt-6">
       <div
         role="tablist"
         aria-label="Media Type Tabs"

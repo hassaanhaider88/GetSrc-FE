@@ -26,7 +26,7 @@ const SideBar = ({ IsideBarShown }) => {
       <div className="flex items-center justify-center my-8">
         <Link to="/about-us" aria-label="Go to Home">
           <img
-            src="../GetSrc_Logo.png"
+            src="../GetUri_Logo.png"
             alt="GetSrc logo"
             className="object-contain max-w-[80px] h-auto"
             loading="lazy"

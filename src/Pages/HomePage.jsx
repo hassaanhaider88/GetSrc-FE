@@ -15,10 +15,14 @@ const HomePage = () => {
   const { DummyFiles, setFilesCopy, FilesCopy, FetchLoading } = useAuth();
 
   useEffect(() => {
-    setFilesCopy(FirstData);
+    if (!FilesCopy) {
+      set(FirstData);
+    } else {
+      return;
+    }
   }, []);
-
-  console.log(FilesCopy)
+  FilesCopy;
+  console.log(FilesCopy);
   // Filter files on search input
   useEffect(() => {
     if (!DummyFiles || DummyFiles.length === 0) return;
@@ -36,10 +40,12 @@ const HomePage = () => {
   return (
     <>
       <Helmet>
-        <title>Home | GetSrc | HMK CodeWeb</title>
+        <title>
+          GetURI – Upload & Host Images Instantly | Free Image CDN for Devs
+        </title>
         <meta
           name="description"
-          content="Learn about GetSrc - the user can access to all uploaded media and Copy and download other's Media"
+          content="Learn about GetURI - the user can access to all uploaded media and Copy and download other's Media"
         />
       </Helmet>
       <section className="w-full min-h-screen px-10 py-10">
@@ -66,7 +72,7 @@ const HomePage = () => {
                 type="search"
                 value={searchVal}
                 onChange={(e) => setSearchVal(e.target.value)}
-                className="block w-full outline-none bg-transparent"
+                className="block  w-full outline-none bg-transparent"
                 placeholder="Search files..."
                 aria-label="Search files by name"
               />

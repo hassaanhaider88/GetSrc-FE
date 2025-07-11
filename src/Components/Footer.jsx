@@ -311,8 +311,8 @@ const FooterCom = () => {
 
         {/* Bottom Section - Large Logo */}
         <div ref={logoRef} className="mt-8">
-          <h1 className="text-white text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light tracking-tight leading-none">
-            Get Src
+          <h1 className="text-white text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light tracking-tight ImagerFont leading-none">
+            Get URI
           </h1>
         </div>
       </motion.div>

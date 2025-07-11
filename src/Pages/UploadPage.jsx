@@ -168,7 +168,7 @@ const UploadPage = () => {
   return (
     <>
     <Helmet>
-        <title>Easy Upload Media | GetSrc</title>
+        <title>Easy Upload Media | GetURI</title>
         <meta
           name="description"
           content="Can easily upload images and video (if pro) and get Instance URL."

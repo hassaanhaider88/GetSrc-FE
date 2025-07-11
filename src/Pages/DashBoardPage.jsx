@@ -68,10 +68,10 @@ const DashBoardPage = () => {
   return (
     <>
      <Helmet>
-        <title>DashBoard | GetSrc</title>
+        <title>DashBoard | GetURI</title>
         <meta
           name="description"
-          content="Learn about GetSrc - the user can access to his all uploaded media and manage them easily."
+          content="Learn about GetURI - the user can access to his all uploaded media and manage them easily."
         />
       </Helmet>
     <section className="w-full min-h-screen px-4 sm:px-[50px] md:px-[100px] sm:py-5 py-2 md:py-10">

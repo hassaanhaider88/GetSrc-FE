@@ -6,7 +6,7 @@ const UpgradePage = () => {
   return (
     <>
     <Helmet>
-        <title>Upgrade To Pro | GetSrc</title>
+        <title>Upgrade To Pro | GetURI</title>
         <meta
           name="description"
           content="Easy Upgrada Your acount and get access to unlimited features for one month.."

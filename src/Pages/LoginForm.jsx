@@ -59,10 +59,10 @@ export default function LoginForm() {
   return (
     <>
     <Helmet>
-        <title>Login To  GetSrc  | HMK CodeWeb</title>
+        <title>Login To  GetURI  | HMK CodeWeb</title>
         <meta
           name="description"
-          content="Login to GetSrc and get access to upload media and get instance Emmedable URI"
+          content="Login to GetURI and get access to upload media and get instance Emmedable URI"
         />
       </Helmet>
     <main className="min-h-screen flex items-center justify-center bg-gradient-to-r from-[#0BA9D1] to-[#71D42C] px-4">

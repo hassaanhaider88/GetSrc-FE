@@ -11,10 +11,10 @@ const AboutUs = () => {
   return (
     <>
       <Helmet>
-        <title>About Us | GetSrc</title>
+        <title>About Us | GetURI</title>
         <meta
           name="description"
-          content="Learn about GetSrc - the ultimate tool for developers to upload, host, and share images and videos instantly via CDN."
+          content="Learn about GetURI - the ultimate tool for developers to upload, host, and share images and videos instantly via CDN."
         />
       </Helmet>
 

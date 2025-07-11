@@ -5,7 +5,7 @@ const PageNotFound = () => {
   return (
     <>
       <Helmet>
-        <title>Page Not Found 😴 | GetSrc</title>
+        <title>Page Not Found 😴 | GetURI</title>
         <meta
           name="description"
           content="Easy Upgrada Your acount and get access to unlimited features for one month.."

@@ -81,7 +81,7 @@ const Profile = () => {
   return (
     <>
     <Helmet>
-        <title>User Profile | GetSrc</title>
+        <title>User Profile | GetURI</title>
         <meta
           name="description"
           content="The user can access to his profile sign out and also upgrade his account."

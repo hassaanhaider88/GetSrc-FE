@@ -87,7 +87,7 @@ export default function FeaturesSection() {
       >
         <motion.div className="text-center mb-16" variants={itemVariants}>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight">
-            Why Developers Choose <span className="text-blue-600">GetSrc</span>
+            Why Developers Choose <span className="ImagerFont text-blue-600">GetURI</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Built for speed, efficiency, and ease of use. GetSrc eliminates the complexity of media hosting so you can focus on what matters most—building amazing products.

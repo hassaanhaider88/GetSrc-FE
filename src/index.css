@@ -1,5 +1,29 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "ImagerFont";
+  src: url('../Imager-Stylist.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.ImagerFont{
+  font-family: "ImagerFont";
+}
+@font-face {
+  font-family: "GlobalFont";
+  src: url('../Imager.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.GlobalFont{
+  font-family: "GlobalFont";
+}
+
+
+
+
 body::-webkit-scrollbar {
   width: 10px;
 }
