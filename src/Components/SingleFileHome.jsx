@@ -54,6 +54,7 @@ const SingleFileHome = ({ FileData, SelectedTab }) => {
       {/* Media: Image or Video */}
       {FileData.img ? (
         <img
+        loading="lazy"
           src={FileData.img}
           alt={FileData.FileName}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -66,7 +67,7 @@ const SingleFileHome = ({ FileData, SelectedTab }) => {
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           className="w-full h-full object-cover pointer-events-none transition-transform duration-500 group-hover:scale-105"
         />
       )}
@@ -97,3 +98,4 @@ const SingleFileHome = ({ FileData, SelectedTab }) => {
 };
 
 export default SingleFileHome;
+

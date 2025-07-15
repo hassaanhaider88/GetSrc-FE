@@ -21,7 +21,7 @@ const HomePage = () => {
       setFilesCopy(FirstData);
     }
   }, [DummyFiles]);
-  
+
   FilesCopy;
   console.log(FilesCopy);
   // Filter files on search input
