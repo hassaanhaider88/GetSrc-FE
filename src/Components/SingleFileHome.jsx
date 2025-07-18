@@ -1,5 +1,6 @@
 import { IoLinkSharp } from "react-icons/io5";
 import { MdFileDownload } from "react-icons/md";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { toast } from "react-toastify";
 const SingleFileHome = ({ FileData, SelectedTab }) => {
   const handleFileDownload = (fileUri) => {
@@ -53,8 +54,8 @@ const SingleFileHome = ({ FileData, SelectedTab }) => {
     >
       {/* Media: Image or Video */}
       {FileData.img ? (
-        <img
-        loading="lazy"
+        <LazyLoadImage
+          loading="lazy"
           src={FileData.img}
           alt={FileData.FileName}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -67,6 +68,7 @@ const SingleFileHome = ({ FileData, SelectedTab }) => {
           loop
           muted
           playsInline
+          loading="lazy"
           preload="metadata"
           className="w-full h-full object-cover pointer-events-none transition-transform duration-500 group-hover:scale-105"
         />
@@ -74,9 +76,13 @@ const SingleFileHome = ({ FileData, SelectedTab }) => {
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-5">
-        <p className="text-white ImagerFont absolute bottom-5 right-5">{FileData.FileType}</p>
-        <p className="text-white  capitalize absolute top-5 left-5">{FileData.FileName}</p>
-        
+        <p className="text-white ImagerFont absolute bottom-5 right-5">
+          {FileData.FileType}
+        </p>
+        <p className="text-white  capitalize absolute top-5 left-5">
+          {FileData.FileName}
+        </p>
+
         <button
           onClick={() => handleFileDownload(currentURL)}
           title="Download"
@@ -93,9 +99,7 @@ const SingleFileHome = ({ FileData, SelectedTab }) => {
         </button>
       </div>
     </div>
-
   );
 };
 
 export default SingleFileHome;
-
