@@ -40,6 +40,22 @@ body::-webkit-scrollbar-thumb {
 } 
 
 
+.TabRadioScroll::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.TabRadioScroll::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 5px;
+}
+
+.TabRadioScroll::-webkit-scrollbar-thumb {
+  background: #4ED7DD;
+  border-radius: 15px;
+  
+} 
+
 .ScrollInVisible::-webkit-scrollbar {
   width: 0;
 }
