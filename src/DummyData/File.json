@@ -15,7 +15,7 @@
   },
   {
     "img": null,
-    "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
     "FileName": "bunny-movie",
     "FileType": "Videos",
     "createdAt": "2024-03-10T18:00:00Z"
@@ -64,7 +64,7 @@
   },
   {
     "img": null,
-    "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
     "FileName": "elephant-dream",
     "FileType": "Videos",
     "createdAt": "2024-10-03T10:00:00Z"
@@ -85,7 +85,7 @@
   },
   {
     "img": null,
-    "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     "FileName": "fire-show",
     "FileType": "Videos",
     "createdAt": "2024-03-15T19:00:00Z"
@@ -134,7 +134,7 @@
   },
   {
     "img": null,
-    "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
     "FileName": "escape-route",
     "FileType": "Videos",
     "createdAt": "2024-10-08T11:00:00Z"
@@ -155,7 +155,7 @@
   },
   {
     "img": null,
-    "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+    "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
     "FileName": "For Bigger Meltdowns",
     "FileType": "Videos",
     "createdAt": "2024-03-20T20:00:00Z"
@@ -204,7 +204,7 @@
   },
   {
     "img": null,
-    "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+    "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
     "FileName": "sintel-movie",
     "FileType": "Videos",
     "createdAt": "2024-10-13T12:00:00Z"
@@ -225,7 +225,7 @@
   },
   {
     "img": null,
-    "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+    "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
     "FileName": "car-ad",
     "FileType": "Videos",
     "createdAt": "2024-03-25T21:00:00Z"
@@ -274,7 +274,7 @@
   },
   {
     "img": null,
-    "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+    "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
     "FileName": "tears-of-steel",
     "FileType": "Videos",
     "createdAt": "2024-10-18T13:00:00Z"
@@ -295,7 +295,7 @@
   },
   {
     "img": null,
-    "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+    "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
     "FileName": "Tears Of Steel",
     "FileType": "Videos",
     "createdAt": "2024-03-30T22:00:00Z"
@@ -344,7 +344,7 @@
   },
   {
     "img": null,
-    "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4",
+    "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4",
     "FileName": "Volkswagen GTI  Review",
     "FileType": "Videos",
     "createdAt": "2024-10-23T14:00:00Z"
@@ -365,7 +365,7 @@
   },
   {
     "img": null,
-    "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+    "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
     "FileName": "We Are Going On Bullrun",
     "FileType": "Videos",
     "createdAt": "2024-10-23T14:00:00Z"
@@ -386,7 +386,7 @@
   },
   {
     "img": null,
-    "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4",
+    "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4",
     "FileName": "We Are Going ForAGrand",
     "FileType": "Videos",
     "createdAt": "2024-10-23T14:00:00Z"
