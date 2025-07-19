@@ -129,7 +129,7 @@ VITE_API_BASE=http://localhost:3000/api
 
 ## ✨ Author
 
-**Hassaan Haider** – [@itsHassaanHaider](https://github.com/itsHassaanHaider)
+**Hassaan Haider** – [@itsHassaanHaider](https://github.com/hassaanhaider88)
 
 ---
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { IoMdSearch } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
 import SingleFileHome from "../Components/SingleFileHome";
@@ -7,36 +7,38 @@ import NoFound from "../Components/NoFound";
 import { useAuth } from "../AuthContext";
 import { Helmet } from "react-helmet";
 import FirstData from "../DummyData/File.json";
+import { toast } from "react-toastify";
+import { useGlobalState } from "@hmk_codeweb88/useglobalstate";
+import { useNavigate } from "react-router-dom";
+import { FaChevronDown } from "react-icons/fa";
 
 const HomePage = () => {
-  const [searchVal, setSearchVal] = useState("");
+  const navigate = useNavigate();
+  const [openSeachTab, setOpenSeachTab] = useState(false);
+  const [selectedSeachTab, setSelectedSeachTab] = useGlobalState(
+    "ImagesTab",
+    "Images",
+    { persist: true }
+  );
+
+  const [searchVal, setSearchVal] = useGlobalState("SearchVal", "");
   const [SelectedTab, setSelectedTab] = useState("All");
-
-  const { DummyFiles, setFilesCopy, FilesCopy, FetchLoading } = useAuth();
+  const [DummyData, setDummyData] = useState(FirstData);
 
   useEffect(() => {
-    if (DummyFiles && DummyFiles.length > 0) {
-      setFilesCopy(DummyFiles);
-    } else {
-      setFilesCopy(FirstData);
-    }
-  }, [DummyFiles]);
-  
-  FilesCopy;
-  console.log(FilesCopy);
-  // Filter files on search input
-  useEffect(() => {
-    if (!DummyFiles || DummyFiles.length === 0) return;
+    setDummyData(DummyData.sort(() => Math.random() - 0.5));
+    console.log(DummyData);
+  }, []);
 
-    if (searchVal.trim() === "") {
-      setFilesCopy(DummyFiles);
+  const handleUserSearch = () => {
+    if (searchVal.trim() === "")
+      return toast.error("Please Search Something....");
+    if (selectedSeachTab == "Images") {
+      navigate(`/searchImages?query=${searchVal}`);
     } else {
-      const filtered = DummyFiles.filter((file) =>
-        file.FileName.toLowerCase().includes(searchVal.toLowerCase())
-      );
-      setFilesCopy(filtered);
+      navigate(`/searchVideos?query=${searchVal}`);
     }
-  }, [searchVal, DummyFiles, setFilesCopy]);
+  };
 
   return (
     <>
@@ -49,14 +51,15 @@ const HomePage = () => {
           content="Learn about GetURI - the user can access to all uploaded media and Copy and download other's Media"
         />
       </Helmet>
-      <section className="w-full min-h-screen px-10 py-10">
-        {FetchLoading ? (
+      <section className="w-full min-h-screen px-5 py-10 sm:px-10">
+        {DummyData == [] ? (
           <div role="status" aria-live="polite" className="text-center text-xl">
             Loading...
           </div>
         ) : (
           <div>
             {/* Search Bar */}
+
             <form
               role="search"
               aria-label="Search files"
@@ -64,7 +67,7 @@ const HomePage = () => {
               onSubmit={(e) => e.preventDefault()}
             >
               <IoMdSearch
-                onClick={() => {}}
+                onClick={handleUserSearch}
                 className="block cursor-pointer hover:scale-90 duration-300 transition-all"
                 size={20}
                 aria-label="Search files"
@@ -73,20 +76,48 @@ const HomePage = () => {
                 type="search"
                 value={searchVal}
                 onChange={(e) => setSearchVal(e.target.value)}
-                className="block  w-full outline-none bg-transparent"
+                className="block w-full outline-none bg-transparent"
                 placeholder="Search files..."
                 aria-label="Search files by name"
               />
-              {searchVal && (
-                <RxCross2
-                  onClick={() => setSearchVal("")}
-                  size={20}
-                  className="cursor-pointer font-bold hover:scale-90 duration-300 transition-all"
-                  aria-label="Clear search input"
-                />
-              )}
-            </form>
+              <div className="relative inline-block text-left">
+                <button
+                  type="button"
+                  onClick={() => setOpenSeachTab(!openSeachTab)}
+                  className="flex items-center gap-2 bg-[#4ED7DD] text-white px-4 py-2 rounded-full  shadow hover:bg-[#4ed6ddd7]"
+                >
+                  {selectedSeachTab} {/* Show selected option */}
+                  <FaChevronDown
+                    className={`transition-transform ${
+                      openSeachTab ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
 
+                {openSeachTab && (
+                  <div className="absolute mt-2 w-30 bg-white  rounded-lg shadow-lg z-10">
+                    <ul className="py-1">
+                      {["Images", "Videos"].map((option) => (
+                        <li
+                          key={option}
+                          className={`px-4 py-2 cursor-pointer hover:bg-gray-100 ${
+                            selectedSeachTab === option
+                              ? "bg-gray-100 font-semibold"
+                              : ""
+                          }`}
+                          onClick={() => {
+                            setSelectedSeachTab(option);
+                            setOpenSeachTab(false);
+                          }}
+                        >
+                          {option}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </form>
             {/* Tabs */}
             <div className="w-full pt-6">
               <TabRadio
@@ -98,15 +129,15 @@ const HomePage = () => {
             {/* Files List */}
             <div
               className={`${
-                FilesCopy?.length > 0
+                DummyData?.length > 0
                   ? "grid md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 gird-col-1"
                   : "flex"
               } ResentFiles py-10 w-full justify-center items-center flex-col gap-5`}
               role="list"
               aria-label="Filtered media files"
             >
-              {FilesCopy?.length > 0 ? (
-                FilesCopy.map((file, idx) => (
+              {DummyData?.length > 0 ? (
+                DummyData.map((file, idx) => (
                   <SingleFileHome
                     key={file._id || idx}
                     FileData={file}

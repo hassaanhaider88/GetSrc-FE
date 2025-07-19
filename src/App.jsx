@@ -22,6 +22,10 @@ import { ToastContainer } from "react-toastify";
 import { useAuth } from "./AuthContext";
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
+import LegalPage from "./Pages/LegalPage";
+import SearchImagesGallery from "./Pages/SearchImages";
+import SearchVideoGallery from "./Pages/SearchVideos";
+
 
 const App = () => {
   const [isSidebarShown, setIsSidebarShown] = useState(true);
@@ -102,11 +106,12 @@ const App = () => {
                 }
               />
               <Route path="/login" element={<LoginForm />} />
-              <Route path="/about-us" element={<AboutUs />}  />
-              <Route
-                path="*"
-                element={<PageNotFound/>}
-              />
+              <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/terms" element={<LegalPage />} />
+              <Route path="/searchImages" element={<SearchImagesGallery />} />
+              <Route path="/searchVideos" element={<SearchVideoGallery  />} />
+              
+              <Route path="*" element={<PageNotFound />} />
             </Routes>
           </main>
         </div>
