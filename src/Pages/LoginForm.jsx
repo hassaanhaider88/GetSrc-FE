@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Helmet } from "react-helmet";
+import MyButton from "../Components/MyButton.jsx";
 
 export default function LoginForm() {
   const navigate = useNavigate();
@@ -133,13 +134,14 @@ export default function LoginForm() {
             <button
               type="submit"
               disabled={loading}
-              style={{
-                boxShadow: "2px 2px 6px #71D42C, -2px -2px 6px #71D42C",
-              }}
-              className="w-full p-3 rounded-full font-semibold bg-gradient-to-r from-[#e9e9e9] to-[#e0dddd] hover:scale-95 duration-300 transition-all text-purple-700 hover:bg-purple-100"
+              className="w-full rounded-full font-semibold flex justify-center items-center"
               aria-busy={loading}
             >
-              {loading ? "Loading..." : isSignIn ? "Sign In" : "Sign Up"}
+              <MyButton
+                BtnText={
+                  loading ? "Loading..." : isSignIn ? "Sign In" : "Sign Up"
+                }
+              />
             </button>
           </form>
           <p className="text-sm">

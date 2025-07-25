@@ -16,6 +16,7 @@
     "@tanstack/react-query": "^5.81.5",
     "@uploadcare/upload-client": "^6.15.2",
     "axios": "^1.10.0",
+    "firebase": "^12.0.0",
     "framer-motion": "^12.23.0",
     "gsap": "^3.13.0",
     "popups": "^1.1.3",

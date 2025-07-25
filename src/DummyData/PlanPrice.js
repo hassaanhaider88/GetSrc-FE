@@ -13,7 +13,7 @@ var PricingData = [
   {
     id: 2,
     name: "Pro",
-    price: 10,
+    price: 5,
     features: [
       "All Free Features",
       "Priority email support",
