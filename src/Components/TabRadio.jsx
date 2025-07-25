@@ -1,5 +1,5 @@
 const TabRadio = ({ SelectedTab, setSelectedTab }) => {
-  const tabs = ["All", "Images", "Videos", "GIFs"];
+  const tabs = ["All", "Images", "Videos", "GIFs","Icons"];
 
   return (
     <div className="w-full ImagerFont flex justify-center items-center mt-6">

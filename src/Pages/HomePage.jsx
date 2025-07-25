@@ -1,10 +1,10 @@
 import React, { use, useEffect, useState } from "react";
 import { IoMdSearch } from "react-icons/io";
-import { RxCross2 } from "react-icons/rx";
+
 import SingleFileHome from "../Components/SingleFileHome";
 import TabRadio from "../Components/TabRadio";
 import NoFound from "../Components/NoFound";
-import { useAuth } from "../AuthContext";
+
 import { Helmet } from "react-helmet";
 import FirstData from "../DummyData/File.json";
 import { toast } from "react-toastify";

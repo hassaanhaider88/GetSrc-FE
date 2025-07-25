@@ -33,8 +33,12 @@ const SingleFileHome = ({ FileData, SelectedTab }) => {
     // Show toast
     toast.success(`${FileData.FileType} downloading...`);
   };
-  const handleFileCopy = (fileUri) => {
-    if (FileData.FileType == "Videos") {
+  const handleFileCopy = () => {
+    if (FileData.FileType == "Icons") {
+      var hostName = window.location.origin;
+      var ImgName = (FileData.img).split('').splice(6).join('')
+      navigator.clipboard.writeText(` ${hostName}/${ImgName}`);
+    } else if (FileData.FileType == "Videos") {
       navigator.clipboard.writeText(FileData.video);
     } else {
       navigator.clipboard.writeText(FileData.img);
