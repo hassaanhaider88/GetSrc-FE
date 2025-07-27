@@ -26,12 +26,12 @@ const SideBar = ({ IsideBarShown }) => {
       <div className="flex items-center justify-center my-8">
         <Link to="/about-us" aria-label="Go to Home">
           <img
-            src="../GetUri_Logo.png"
+            src="../GetUri_Online.png"
             alt="GetSrc logo"
-            className="object-contain max-w-[80px] h-auto"
+            className="object-contain max-w-[120px] h-auto"
             loading="lazy"
-            width="80"
-            height="80"
+            width="120"
+            height="120"
           />
         </Link>
       </div>
