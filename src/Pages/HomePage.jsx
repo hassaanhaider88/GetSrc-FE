@@ -4,6 +4,7 @@ import { IoMdSearch } from "react-icons/io";
 import SingleFileHome from "../Components/SingleFileHome";
 import TabRadio from "../Components/TabRadio";
 import NoFound from "../Components/NoFound";
+import Footer from '../Components/Footer'
 
 import { Helmet } from "react-helmet";
 import FirstData from "../DummyData/File.json";
@@ -24,10 +25,14 @@ const HomePage = () => {
   const [searchVal, setSearchVal] = useGlobalState("SearchVal", "");
   const [SelectedTab, setSelectedTab] = useState("All");
   const [DummyData, setDummyData] = useState(FirstData);
+  const [visibleCount, setVisibleCount] = useState(40);
+
+  const loadMoreFiles = () => {
+    setVisibleCount((prev) => prev + 40);
+  };
 
   useEffect(() => {
     setDummyData(DummyData.sort(() => Math.random() - 0.5));
-    console.log(DummyData);
   }, []);
 
   const handleUserSearch = () => {
@@ -75,9 +80,15 @@ const HomePage = () => {
               <input
                 type="search"
                 value={searchVal}
-                onChange={(e) => setSearchVal(e.target.value)}
+                // onChange={(e) => setSearchVal(e.target.value)}
+                onChange={(e) => {setSearchVal(e.target.value)}}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleUserSearch(searchVal); // Call your function on Enter
+                  }
+                }}
                 className="block w-full outline-none bg-transparent"
-                placeholder="Search files..."
+                placeholder={`Search ${selectedSeachTab}  Globally...`}
                 aria-label="Search files by name"
               />
               <div className="relative inline-block text-left">
@@ -137,7 +148,7 @@ const HomePage = () => {
               aria-label="Filtered media files"
             >
               {DummyData?.length > 0 ? (
-                DummyData.map((file, idx) => (
+                DummyData.slice(0, visibleCount).map((file, idx) => (
                   <SingleFileHome
                     key={file._id || idx}
                     FileData={file}
@@ -150,6 +161,19 @@ const HomePage = () => {
             </div>
           </div>
         )}
+        {visibleCount < DummyData.length && (
+          <div className="text-center mt-5">
+            <button onClick={loadMoreFiles} class="frutiger-button">
+              <div class="inner">
+                <div class="top-white"></div>
+                <span class="text">Load More</span>
+              </div>
+            </button>
+          </div>
+        )}
+      <div className="w-full mt-5 my-2">
+          <Footer/>
+      </div>
       </section>
     </>
   );
