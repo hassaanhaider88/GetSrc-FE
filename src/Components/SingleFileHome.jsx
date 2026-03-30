@@ -1,3 +1,4 @@
+/* eslint-disable no-constant-condition */
 import { IoLinkSharp } from "react-icons/io5";
 import { MdFileDownload } from "react-icons/md";
 import { LazyLoadImage } from "react-lazy-load-image-component";

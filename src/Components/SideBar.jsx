@@ -28,10 +28,7 @@ const SideBar = ({ IsideBarShown }) => {
           <img
             src="../GetUri_Online.png"
             alt="GetSrc logo"
-            className="object-contain max-w-[120px] h-auto"
-            loading="lazy"
-            width="120"
-            height="120"
+            className="object-contain  w-[120px] h-auto"
           />
         </Link>
       </div>

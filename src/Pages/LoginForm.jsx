@@ -66,13 +66,22 @@ export default function LoginForm() {
           content="Login to GetURI and get access to upload media and get instance Emmedable URI"
         />
       </Helmet>
-      <main className="min-h-screen flex items-center justify-center bg-gradient-to-r from-[#0BA9D1] to-[#71D42C] px-4">
+
+      <main
+        style={{
+          background:
+            "radial-gradient(125% 125% at 50% 10%, #fff 40%, #69dae1 100%)",
+        }}
+        className="min-h-screen flex items-center justify-center text-black px-4"
+      >
         <div className="relative w-full max-w-md p-8 bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl">
-          <header className="text-white text-center mb-6">
+          <header className=" text-center mb-6">
             <h1 className="text-4xl font-bold mb-2">
               {isSignIn ? "Welcome Back" : "Create Account"}
             </h1>
-            <p className="text-sm capitalize">Welcome to our platform</p>
+            <p className="text-sm font-semibold capitalize">
+              Welcome to GetURI
+            </p>
           </header>
 
           {error && (
@@ -85,7 +94,12 @@ export default function LoginForm() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+          <form
+            onSubmit={handleSubmit}
+            autoComplete="false"
+            className="space-y-5"
+            noValidate
+          >
             {!isSignIn && (
               <input
                 type="text"
@@ -93,7 +107,7 @@ export default function LoginForm() {
                 placeholder="Full Name"
                 value={formData.fullName}
                 onChange={handleChange}
-                className="w-full p-3 rounded-full border border-white/30 bg-white/20 text-white placeholder-white/70"
+                className="w-full p-3 rounded-full border border-[#69DAE1] bg-white/20 placeholder-[#69DAE1]/70"
                 required
                 aria-label="Full Name"
               />
@@ -105,7 +119,7 @@ export default function LoginForm() {
               placeholder="Email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full p-3 rounded-full border border-white/30 bg-white/20 text-white placeholder-white/70"
+              className="w-full focus:outline-none p-3 rounded-full border border-[#69DAE1] bg-white/20 placeholder-[#69DAE1]/70"
               required
               aria-label="Email Address"
             />
@@ -117,14 +131,14 @@ export default function LoginForm() {
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full p-3 rounded-full border border-white/30 bg-white/20 text-white placeholder-white/70"
+                className="w-full p-3 focus:outline-none rounded-full border border-[#69DAE1] bg-white/20 placeholder-[#69DAE1]/70"
                 required
                 aria-label="Password"
               />
               <button
                 type="button"
                 onClick={() => setShowPass((prev) => !prev)}
-                className="absolute top-[18px] right-3 text-white"
+                className="absolute top-[18px] right-3"
                 aria-label={showPass ? "Hide password" : "Show password"}
               >
                 {showPass ? <FiEye /> : <FiEyeOff />}
@@ -134,7 +148,7 @@ export default function LoginForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-full font-semibold flex justify-center items-center"
+              className="w-full my-4  rounded-full font-semibold flex justify-center items-center"
               aria-busy={loading}
             >
               <MyButton
@@ -155,12 +169,12 @@ export default function LoginForm() {
             of our website.
           </p>
 
-          <footer className="text-white text-sm mt-6 text-center">
+          <footer className="text-sm mt-6 text-center">
             {isSignIn ? "Don't have an account?" : "Already have an account?"}{" "}
             <button
               type="button"
               onClick={toggleForm}
-              className="underline font-medium hover:text-white"
+              className="underline font-medium hover"
             >
               {isSignIn ? "Sign Up" : "Sign In"}
             </button>
