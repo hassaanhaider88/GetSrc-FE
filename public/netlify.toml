@@ -1,0 +1,8 @@
+[build]
+  publish = "dist"   # Vite ke liye
+  # publish = "build"   # Create React App ke liye
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
