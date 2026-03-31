@@ -12,12 +12,10 @@ export const useAuth = () => useContext(AuthContext);
 // Provider component
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(
-    JSON.parse(localStorage.getItem("UserData")) || false
+   (localStorage.getItem("getURIUser")) || false,
   );
   const [DummyFiles, setDummyFiles] = useState([]);
   const [FilesCopy, setFilesCopy] = useState([]);
-
-  
 
   return (
     <AuthContext.Provider

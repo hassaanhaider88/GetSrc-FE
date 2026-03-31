@@ -15,6 +15,7 @@ const UploadPage = () => {
   const [isURLMode, setIsURLMode] = useState(false);
   const [urlVal, setUrlVal] = useState("");
   const [fileName, setFileName] = useState("");
+  const [IsMediaPrivate, setIsMediaPrivate] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [btnLoading, setBtnLoading] = useState(false);
   const [fileSelected, setFileSelected] = useState(false);
@@ -36,6 +37,7 @@ const UploadPage = () => {
       Video: null,
       UserCreated: user?._id,
       FileType: selectType,
+      IsPrivate: IsMediaPrivate,
     };
 
     const response = await axios.post(
@@ -122,9 +124,13 @@ const UploadPage = () => {
       formData.append("File_Name", fileName);
       formData.append("FileType", selectType);
       formData.append("UserCreated", user?._id);
+      formData.append("IsPrivate", IsMediaPrivate);
 
       const res = await axios.post(`${GetSrcBE}/api/upload-video`, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${localStorage.getItem("getURIUser")}`,
+        },
       });
 
       setBtnLoading(false);
@@ -215,7 +221,7 @@ const UploadPage = () => {
           )}
 
           <div
-            className={`flex flex-col gap-4 ${isURLMode ? "w-full" : "w-1/2"}`}
+            className={`flex flex-col gap-4 ${isURLMode ? "w-full" : "md:w-1/2 w-full"}`}
           >
             {isURLMode && (
               <input
@@ -235,6 +241,28 @@ const UploadPage = () => {
               className="w-full px-5 py-2 rounded-[40px] bg-[#F6F5FB] outline-none"
               required
             />
+
+            <div class="checkbox-wrapper-35">
+              <input
+                name="switch"
+                id="switch"
+                value={IsMediaPrivate}
+                onChange={(e) => setIsMediaPrivate(e.target.checked)}
+                type="checkbox"
+                class="switch"
+              />
+              <label for="switch">
+                <span class="switch-x-text">This Media Is </span>
+                <span class="switch-x-toggletext">
+                  <span class="switch-x-unchecked">
+                    <span class="switch-x-hiddenlabel">Unchecked: </span>Public
+                  </span>
+                  <span class="switch-x-checked">
+                    <span class="switch-x-hiddenlabel">Checked: </span>Private
+                  </span>
+                </span>
+              </label>
+            </div>
 
             <div className="w-full flex justify-center mt-4">
               <div className="relative flex px-2 rounded-xl">

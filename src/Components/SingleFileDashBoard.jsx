@@ -3,8 +3,7 @@ import { IoLinkSharp } from "react-icons/io5";
 import { toast } from "react-toastify";
 import { FaDeleteLeft } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-import GetSrcBE from '../../API.js'
-
+import GetSrcBE from "../../API.js";
 
 const SingleFileInfo = ({ FileData, Length, SelectedTab }) => {
   const navigate = useNavigate();
@@ -14,8 +13,12 @@ const SingleFileInfo = ({ FileData, Length, SelectedTab }) => {
     if (!isConfirmed) return;
 
     try {
-      console.log(FileData._id)
-      const res = await fetch(`${GetSrcBE}/api/file/${FileData._id}`);
+      console.log(FileData._id);
+      const res = await fetch(`${GetSrcBE}/api/file/${FileData._id}`, {
+        headers: {
+          Authirization: `Bearer ${localStorage.getItem("getURIUser")}`,
+        },
+      });
       const data = await res.json();
 
       if (!data.success) {
@@ -41,8 +44,7 @@ const SingleFileInfo = ({ FileData, Length, SelectedTab }) => {
       ? FileData.img
       : FileData.video;
 
-  const isVisible =
-    SelectedTab === "All" || SelectedTab === FileData.FileType;
+  const isVisible = SelectedTab === "All" || SelectedTab === FileData.FileType;
 
   if (!isVisible) return null;
 
@@ -61,7 +63,10 @@ const SingleFileInfo = ({ FileData, Length, SelectedTab }) => {
       </span>
 
       {/* Preview & Title */}
-      <div className="flex items-center gap-4" aria-label="Preview and file name">
+      <div
+        className="flex items-center gap-4"
+        aria-label="Preview and file name"
+      >
         <div className="w-20 h-20 overflow-hidden rounded-xl shadow-sm border border-gray-100 bg-gray-50 flex items-center justify-center">
           {FileData.img ? (
             <img
@@ -94,7 +99,10 @@ const SingleFileInfo = ({ FileData, Length, SelectedTab }) => {
       </div>
 
       {/* Action Buttons */}
-      <div className="flex flex-col items-center justify-center gap-2" aria-label="File actions">
+      <div
+        className="flex flex-col items-center justify-center gap-2"
+        aria-label="File actions"
+      >
         <div className="flex items-center gap-4">
           <button
             onClick={handleFileDelete}

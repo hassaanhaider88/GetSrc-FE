@@ -20,9 +20,8 @@ const useUserStore = create((set, get) => ({
         password,
       });
       const userData = res.data.user;
-      localStorage.setItem("UserData", JSON.stringify(userData));
       set({ user: userData, UserData: userData, loading: false });
-      return userData;
+      return { userData, token: res.data.token };
     } catch (err) {
       set({
         error: err.response?.data?.error || "Sign up failed",
@@ -42,7 +41,7 @@ const useUserStore = create((set, get) => ({
       const userData = res.data.user;
       localStorage.setItem("UserData", JSON.stringify(userData));
       set({ user: userData, UserData: userData, loading: false });
-      return userData;
+      return { userData, token: res.data.token };
     } catch (err) {
       set({
         error: err.response?.data?.error || "Sign in failed",

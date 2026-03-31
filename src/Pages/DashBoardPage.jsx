@@ -32,14 +32,19 @@ const DashBoardPage = () => {
 
   // Fetch user files
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("UserData"));
-    if (!user) return;
+    const token = localStorage.getItem("getURIUser");
+    if (!token) return;
 
     const fetchFiles = async () => {
       try {
-        const res = await fetch(`${GetSrcBE}/api/user/${user._id}`);
+        const res = await fetch(`${GetSrcBE}/api/user/posts`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         const data = await res.json();
-        const uploaded = data?.data?.uploadedMedia || [];
+        console.log(data, "dashboard page");
+        const uploaded = data?.data || [];
         setFiles(uploaded);
         setFilteredFiles(uploaded);
       } catch (error) {
@@ -55,7 +60,7 @@ const DashBoardPage = () => {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("UserData"));
     setIsLoggedIn(!!user);
-  }, []);
+  }, [setIsLoggedIn]);
 
   // Redirect to dashboard if logged in
   useEffect(() => {
@@ -116,7 +121,7 @@ const DashBoardPage = () => {
             filteredFiles.length > 0
               ? "md:grid-cols-2 grid-cols-1 h-screen"
               : "grid-cols-1"
-          } grid mt-10 px-20 overflow-x-hidden overflow-y-auto ResentFiles py-10 w-full shadow-xl rounded-4xl justify-center items-center flex-col gap-5`}
+          } grid mt-10 px-5 md:px-16 overflow-x-hidden overflow-y-auto ResentFiles py-10 w-full shadow-xl rounded-4xl justify-center items-center flex-col gap-5`}
           role="list"
           aria-label="Uploaded files"
         >

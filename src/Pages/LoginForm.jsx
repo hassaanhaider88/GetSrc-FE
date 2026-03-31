@@ -39,17 +39,14 @@ export default function LoginForm() {
       ? await signIn(email, password)
       : await signUp(fullName, email, password);
 
+    console.log(response);
     if (response) {
       setIsLoggedIn(true);
+      localStorage.setItem("getURIUser", response.token);
     } else {
       toast.error("Something went wrong");
     }
   };
-
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("UserData"));
-    setIsLoggedIn(!!user);
-  }, [setIsLoggedIn]);
 
   useEffect(() => {
     if (isLoggedIn) {
