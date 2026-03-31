@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import GetSrcBE from "../API.js";
 import FirstData from "./DummyData/File.json";
 
@@ -16,27 +16,12 @@ export const AuthProvider = ({ children }) => {
   );
   const [DummyFiles, setDummyFiles] = useState([]);
   const [FilesCopy, setFilesCopy] = useState([]);
-  const [FetchLoading, setFetchLoading] = useState(false);
-  useEffect(() => {
-    async function fetchData() {
-      // setFetchLoading(true);
-      // var req = await fetch(`${GetSrcBE}/api/files`);
-      // var data = await req.json();
-      // if (!data.Data) {
-      //   setFetchLoading(false)
-      //   return setDummyFiles([]);
-      // }
-      setDummyFiles(FirstData);
-      // setFilesCopy(data.Data.sort(() => Math.random() - 0.5));
-    }
-    fetchData();
-    setFetchLoading(false);
-  }, []);
+
+  
 
   return (
     <AuthContext.Provider
       value={{
-        FetchLoading,
         isLoggedIn,
         setIsLoggedIn,
         DummyFiles,
