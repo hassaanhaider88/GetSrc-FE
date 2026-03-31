@@ -1,17 +1,18 @@
-import axios from "axios";
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Helmet } from "react-helmet";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import QueryVideos from "../Components/QueryVideos";
-import LoadingCom from '../Components/Loading'
+import LoadingCom from "../Components/Loading";
 
 import { useGlobalState } from "@hmk_codeweb88/useglobalstate";
 
 import { IoMdSearch } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
+import { toast } from "react-toastify";
+import GetSrcBE from "../../API";
 
-const API_KEY = import.meta.env.VITE_PEXEL_API_KEY;
 function useQuery() {
   const { search } = useLocation();
   return new URLSearchParams(search);
@@ -29,11 +30,13 @@ function SearchVideoGallery() {
     const fetchVideos = async () => {
       setLaoding(true);
       setSearchVal(query);
-      const res = await axios.get("https://api.pexels.com/videos/search", {
-        headers: { Authorization: API_KEY },
-        params: { query, per_page: 20 },
-      });
-      setVideos(res.data.videos);
+      const res = await fetch(`${GetSrcBE}/api/searchs/videos?q=${query}`);
+      const data = await res.json();
+      if (data.success) {
+        setVideos(data.results);
+      } else {
+        toast.error("Error Searching For Videos");
+      }
       setTimeout(() => {
         setLaoding(false);
       }, 2000);
@@ -88,7 +91,7 @@ function SearchVideoGallery() {
         )}
       </form>
       {loading ? (
-       <LoadingCom/>
+        <LoadingCom />
       ) : (
         <div className="grid md:grid-cols-3 mt-10 px-5 lg:grid-cols-4 gap-4 py-10 sm:grid-cols-2 gird-col-1">
           {videos.map((v, idx) => (

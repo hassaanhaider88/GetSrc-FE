@@ -3,15 +3,14 @@ import { MdFileDownload } from "react-icons/md";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { toast } from "react-toastify";
 const QueryImages = ({ ImageData }) => {
-  console.log(ImageData);
   const handleFileDownload = (fileUri) => {
-    const fileNameWithExtension = `${ImageData.FileName.trim()}.png`;
+    const fileNameWithExtension = `${ImageData.FileName.trim()}.webp`;
     const a = document.createElement("a");
     a.href = fileUri;
     a.download = fileNameWithExtension;
     document.body.appendChild(a);
     a.click();
-    document.body.removeChild(a); 
+    document.body.removeChild(a);
     // Show toast
     toast.success(`Images downloading...`);
   };
@@ -23,7 +22,7 @@ const QueryImages = ({ ImageData }) => {
     // <h1>Img</h1>
     <div className="relative w-full h-[200px] cursor-pointer group overflow-hidden rounded-xl">
       <LazyLoadImage
-        loading="lazy"
+        loading="eager"
         src={ImageData.links.download}
         alt={ImageData.alt_description}
         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"

@@ -1,14 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
-import axios from "axios";
+
 import { useLocation, useNavigate } from "react-router-dom";
 import QueryImages from "../Components/QueryImages";
 import { Helmet } from "react-helmet";
 import { useGlobalState } from "@hmk_codeweb88/useglobalstate";
-import LoadingCom from '../Components/Loading'
+import LoadingCom from "../Components/Loading";
 import { IoMdSearch } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
-
-const ACCESS_KEY = import.meta.env.VITE_UNSPLASH_KEY;
+import { toast } from "react-toastify";
+import GetSrcBE from "../../API.js";
 
 function useQuery() {
   const { search } = useLocation();
@@ -25,19 +26,13 @@ function SearchImagesGallery() {
     setLoading(true);
     setSearchVal(query);
     try {
-      const response = await axios.get(
-        "https://api.unsplash.com/search/photos",
-        {
-          params: {
-            query: query, // 🔍 Change this to anything (e.g., animals, tech)
-            per_page: 20,
-          },
-          headers: {
-            Authorization: `Client-ID ${ACCESS_KEY}`,
-          },
-        }
-      );
-      setImages(response.data.results);
+      const response = await fetch(`${GetSrcBE}/api/searchs/imgs?q=${query}`);
+      const data = await response.json();
+      if (data.success) {
+        setImages(data.results);
+      } else {
+        toast.error("Error Searching For Images");
+      }
       setTimeout(() => {
         setLoading(false);
       }, 2000);
@@ -98,7 +93,7 @@ function SearchImagesGallery() {
         )}
       </form>
       {loading ? (
-        <LoadingCom/>
+        <LoadingCom />
       ) : (
         <div className="grid md:grid-cols-3 mt-10 px-5 lg:grid-cols-4 gap-4 py-10 sm:grid-cols-2 gird-col-1">
           {images.map((img) => (

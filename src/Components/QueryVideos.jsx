@@ -1,19 +1,12 @@
 import { IoLinkSharp } from "react-icons/io5";
 import { MdFileDownload } from "react-icons/md";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import { downloadUrl } from "download.js";
 import { toast } from "react-toastify";
 const QueryVideos = ({ VideoData }) => {
-
   const handleFileDownload = (fileUri) => {
-    const fileNameWithExtension = VideoData.video_files[0].link;
-    const a = document.createElement("a");
-    a.href = fileUri;
-    a.download = fileNameWithExtension;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    // Show toast
-    toast.success(`Videos download...`);
+   
+    downloadUrl(fileUri, `video_${VideoData.id}.mp4`);
+    toast.success(`Videos downloading...`);
   };
   const handleFileCopy = (fileUri) => {
     navigator.clipboard.writeText(fileUri);
@@ -30,7 +23,7 @@ const QueryVideos = ({ VideoData }) => {
         loop
         muted
         playsInline
-        loading="lazy"
+        loading="eager"
         preload="metadata"
         className="w-full h-full object-cover pointer-events-none transition-transform duration-500 group-hover:scale-105"
       />
