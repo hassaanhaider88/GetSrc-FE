@@ -26,7 +26,6 @@ import LegalPage from "./Pages/LegalPage";
 import SearchImagesGallery from "./Pages/SearchImages";
 import SearchVideoGallery from "./Pages/SearchVideos";
 
-
 const App = () => {
   const [isSidebarShown, setIsSidebarShown] = useState(true);
   const { isLoggedIn, setIsLoggedIn } = useAuth();
@@ -35,6 +34,8 @@ const App = () => {
     const user = JSON.parse(localStorage.getItem("UserData"));
     setIsLoggedIn(!!user);
   }, []);
+
+  
 
   return (
     <Router>
@@ -109,8 +110,8 @@ const App = () => {
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/terms" element={<LegalPage />} />
               <Route path="/searchImages" element={<SearchImagesGallery />} />
-              <Route path="/searchVideos" element={<SearchVideoGallery  />} />
-              
+              <Route path="/searchVideos" element={<SearchVideoGallery />} />
+
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </main>

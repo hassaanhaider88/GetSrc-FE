@@ -1,10 +1,12 @@
-import React, { use, useEffect, useState } from "react";
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect, useState } from "react";
 import { IoMdSearch } from "react-icons/io";
 
 import SingleFileHome from "../Components/SingleFileHome";
 import TabRadio from "../Components/TabRadio";
 import NoFound from "../Components/NoFound";
-import Footer from '../Components/Footer'
+import Footer from "../Components/Footer";
 
 import { Helmet } from "react-helmet";
 import FirstData from "../DummyData/File.json";
@@ -12,27 +14,67 @@ import { toast } from "react-toastify";
 import { useGlobalState } from "@hmk_codeweb88/useglobalstate";
 import { useNavigate } from "react-router-dom";
 import { FaChevronDown } from "react-icons/fa";
+import HomePageImagesDataContext, {
+  fetchHomeScreenData,
+} from "../Store/HomePageImagesData";
 
 const HomePage = () => {
+  const { homePageImagesData } = useContext(HomePageImagesDataContext);
+
   const navigate = useNavigate();
-  const [openSeachTab, setOpenSeachTab] = useState(false);
-  const [selectedSeachTab, setSelectedSeachTab] = useGlobalState(
-    "ImagesTab",
-    "Images",
-    { persist: true }
-  );
 
   const [searchVal, setSearchVal] = useGlobalState("SearchVal", "");
   const [SelectedTab, setSelectedTab] = useState("All");
-  const [DummyData, setDummyData] = useState(FirstData);
+  const [MediaData, setMediaData] = useState(FirstData);
   const [visibleCount, setVisibleCount] = useState(40);
+  const [ShowMoreLoadBtn, setShowMoreLoadBtn] = useState(true);
+  const [PageNo, setPageNo] = useState(1); // for pagination if needed
+  const [openSeachTab, setOpenSeachTab] = useState(false);
+  const [LoadMoreDataLoading, setLoadMoreDataLoading] = useState(false);
+  const [selectedSeachTab, setSelectedSeachTab] = useGlobalState(
+    "ImagesTab",
+    "Images",
+    { persist: true },
+  );
 
-  const loadMoreFiles = () => {
-    setVisibleCount((prev) => prev + 40);
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  async function fetchData() {
+    const ResData = await fetchHomeScreenData(PageNo);
+    if (!ResData.success || ResData.length === 0) {
+      setMediaData(FirstData);
+    } else {
+      setMediaData(ResData?.data);
+    }
+    console.log(ResData);
+  }
+
+  const loadMoreFiles = async () => {
+    if (LoadMoreDataLoading) return;
+    setLoadMoreDataLoading(true);
+    try {
+      setPageNo((prev) => prev + 1);
+      const fetchedNewData = await fetchHomeScreenData(PageNo + 1);
+      if (fetchedNewData.success) {
+        const newData = fetchedNewData.data;
+        setMediaData((prev) => [...prev, ...newData]);
+        if (newData.length < 40) {
+          setShowMoreLoadBtn(false);
+        }
+      } else {
+        toast.error("No more files to load.");
+      }
+    } catch (error) {
+      toast.error("Error loading more files. Please try again later.");
+    } finally {
+      setLoadMoreDataLoading(false);
+    }
   };
 
   useEffect(() => {
-    setDummyData(DummyData.sort(() => Math.random() - 0.5));
+    setMediaData(MediaData.sort(() => Math.random() - 0.5));
   }, []);
 
   const handleUserSearch = () => {
@@ -57,7 +99,7 @@ const HomePage = () => {
         />
       </Helmet>
       <section className="w-full min-h-screen px-5 py-10 sm:px-10">
-        {DummyData == [] ? (
+        {MediaData == [] ? (
           <div role="status" aria-live="polite" className="text-center text-xl">
             Loading...
           </div>
@@ -81,7 +123,9 @@ const HomePage = () => {
                 type="search"
                 value={searchVal}
                 // onChange={(e) => setSearchVal(e.target.value)}
-                onChange={(e) => {setSearchVal(e.target.value)}}
+                onChange={(e) => {
+                  setSearchVal(e.target.value);
+                }}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
                     handleUserSearch(searchVal); // Call your function on Enter
@@ -140,15 +184,15 @@ const HomePage = () => {
             {/* Files List */}
             <div
               className={`${
-                DummyData?.length > 0
+                MediaData?.length > 0
                   ? "grid md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 gird-col-1"
                   : "flex"
               } ResentFiles py-10 w-full justify-center items-center flex-col gap-5`}
               role="list"
               aria-label="Filtered media files"
             >
-              {DummyData?.length > 0 ? (
-                DummyData.slice(0, visibleCount).map((file, idx) => (
+              {MediaData?.length > 0 ? (
+                MediaData.map((file, idx) => (
                   <SingleFileHome
                     key={file._id || idx}
                     FileData={file}
@@ -161,19 +205,27 @@ const HomePage = () => {
             </div>
           </div>
         )}
-        {visibleCount < DummyData.length && (
+
+        {ShowMoreLoadBtn && (
           <div className="text-center mt-5">
-            <button onClick={loadMoreFiles} class="frutiger-button">
+            <button
+              disabled={LoadMoreDataLoading}
+              type="button"
+              onClick={() => loadMoreFiles()}
+              class="frutiger-button"
+            >
               <div class="inner">
                 <div class="top-white"></div>
-                <span class="text">Load More</span>
+                <span class="text">
+                  {LoadMoreDataLoading ? "Loading..." : "Load More"}
+                </span>
               </div>
             </button>
           </div>
         )}
-      <div className="w-full mt-5 my-2">
-          <Footer/>
-      </div>
+        <div className="w-full mt-5 my-2">
+          <Footer />
+        </div>
       </section>
     </>
   );
