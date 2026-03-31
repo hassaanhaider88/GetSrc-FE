@@ -26,6 +26,12 @@ importers:
       axios:
         specifier: ^1.10.0
         version: 1.10.0
+      download.js:
+        specifier: ^1.0.0
+        version: 1.0.0
+      downloader:
+        specifier: ^0.1.2
+        version: 0.1.2
       framer-motion:
         specifier: ^12.23.0
         version: 12.23.6(@emotion/is-prop-valid@1.2.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -796,6 +802,12 @@ packages:
   detect-libc@2.0.4:
     resolution: {integrity: sha512-3UDv+G9CsCKO1WKMGw9fwq/SWJYbI0c5Y7LU1AXYoDdbhE2AHQ6N6Nb34sG8Fj7T5APy8qXDCKuuIHd1BR0tVA==}
     engines: {node: '>=8'}
+
+  download.js@1.0.0:
+    resolution: {integrity: sha512-iBKyLmMkSrrNPfQaJJPcas0nufK1aBH+6fFZP9dAAaGvYywOHH11ZfVCHvHa1aQfHjZ3tjD09APUQ6JAq38+ow==}
+
+  downloader@0.1.2:
+    resolution: {integrity: sha512-Avd0JngH7nAuwy7x83Q9rT9RTpelZdYmStQjrGgbnGCthd5O1KJxzYasEXsDuO7JzPxZe7RPW6Cq79pN6XXYvQ==}
 
   dunder-proto@1.0.1:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
@@ -2102,6 +2114,10 @@ snapshots:
   delayed-stream@1.0.0: {}
 
   detect-libc@2.0.4: {}
+
+  download.js@1.0.0: {}
+
+  downloader@0.1.2: {}
 
   dunder-proto@1.0.1:
     dependencies:
