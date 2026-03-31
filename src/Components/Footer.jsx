@@ -1,3 +1,4 @@
+import { TbHeartHandshake } from "react-icons/tb"; 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
@@ -12,31 +13,36 @@ import GetSrcBE from "../../API";
 const FooterCom = () => {
   const footerRef = useRef(null);
   const logoRef = useRef(null);
-  const [IsEmailSend, setIsEmailSend] = useState(false);
+  const [IsEmailSend, setIsEmailSend] = useState(
+    localStorage.getItem("IsEmailSend") || false,
+  );
   const [EmailVal, setEmailVal] = useState("");
   const handleIconClick = (link) => {
     window.open(link);
   };
 
   const handleEmail = async () => {
-    if (!EmailVal) return toast.error("Please fill in your email.");
-    if (!EmailVal.includes("@")) return alert("Valid email enter karein");
-    setIsEmailSend(true);
-      const res = await fetch(
-        `${GetSrcBE}/api/save-email?email=${EmailVal}`
-      );
+    try {
+      if (!EmailVal) return toast.error("Please fill in your email.");
+      if (!EmailVal.includes("@")) return alert("Valid email enter karein");
+      setIsEmailSend(true);
+      const res = await fetch(`${GetSrcBE}/api/save-email?email=${EmailVal}`);
 
       const data = await res.json(); // Optional: check response
       console.log("Server response:", data);
 
       if (data.success) {
         toast.success("Thanks for your trust!");
+        localStorage.setItem("IsEmailSend", true);
+        setIsEmailSend(true);
       } else {
-        toast.error(data.error || "Something went wrong");
-        setIsEmailSend(false)
+        toast.error(data.message || "Something went wrong");
+        setIsEmailSend(false);
       }
+    } catch (error) {
+      console.log(error);
     }
-  
+  };
 
   useEffect(() => {
     // GSAP animations for logo
@@ -44,7 +50,7 @@ const FooterCom = () => {
       gsap.fromTo(
         logoRef.current,
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 1.2, ease: "power2.out", delay: 0.3 }
+        { opacity: 1, y: 0, duration: 1.2, ease: "power2.out", delay: 0.3 },
       );
     }
 
@@ -100,8 +106,8 @@ const FooterCom = () => {
               Hassaan Haider ™
             </h3>
             {IsEmailSend ? (
-              <div className="text-lg mb-5 font-semibold text-white py-2">
-                Submit Successfully
+              <div className="text-lg flex items-center gap-2 justify-center  mb-5 font-semibold text-white py-2">
+                Email Submited Successfully <TbHeartHandshake size={23} color="#4FCBDC" />
               </div>
             ) : (
               <div className="flex flex-col sm:flex-row gap-3 mb-6">
@@ -133,7 +139,7 @@ const FooterCom = () => {
                 <div
                   onClick={() =>
                     handleIconClick(
-                      "https://codepen.io/Hassaan-Haider-the-sans"
+                      "https://codepen.io/Hassaan-Haider-the-sans",
                     )
                   }
                   className="btn"
@@ -159,7 +165,7 @@ const FooterCom = () => {
                 <div
                   onClick={() =>
                     handleIconClick(
-                      "https://www.linkedin.com/in/hassaan-haider-627272294"
+                      "https://www.linkedin.com/in/hassaan-haider-627272294",
                     )
                   }
                   className="btn"
@@ -200,7 +206,7 @@ const FooterCom = () => {
                 <div
                   onClick={() =>
                     handleIconClick(
-                      "https://www.instagram.com/hassaanhaiderhmk/"
+                      "https://www.instagram.com/hassaanhaiderhmk/",
                     )
                   }
                   className="btn"
