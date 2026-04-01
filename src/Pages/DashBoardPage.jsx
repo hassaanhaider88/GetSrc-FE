@@ -43,7 +43,6 @@ const DashBoardPage = () => {
           },
         });
         const data = await res.json();
-        console.log(data, "dashboard page");
         const uploaded = data?.data || [];
         setFiles(uploaded);
         setFilteredFiles(uploaded);
@@ -129,7 +128,6 @@ const DashBoardPage = () => {
             filteredFiles.map((file, idx) => (
               <SingleFileInfo
                 key={file._id || idx}
-                Length={idx + 1}
                 SelectedTab={SelectedTab}
                 FileData={file}
               />

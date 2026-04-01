@@ -35,11 +35,15 @@ const App = () => {
     setIsLoggedIn(!!user);
   }, []);
 
-  
-
   return (
     <Router>
-      <div className="min-h-screen flex flex-col bg-white text-black">
+      <div
+        style={{
+          background:
+            "radial-gradient(125% 125% at 50% 10%, #fff 40%, #69dae1 100%)",
+        }}
+        className="min-h-screen flex flex-col  text-black"
+      >
         <div className="flex flex-1 w-full">
           {/* Sidebar */}
           <nav

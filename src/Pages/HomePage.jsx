@@ -26,7 +26,6 @@ const HomePage = () => {
   const [searchVal, setSearchVal] = useGlobalState("SearchVal", "");
   const [SelectedTab, setSelectedTab] = useState("All");
   const [MediaData, setMediaData] = useState(FirstData);
-  const [visibleCount, setVisibleCount] = useState(40);
   const [ShowMoreLoadBtn, setShowMoreLoadBtn] = useState(true);
   const [PageNo, setPageNo] = useState(1); // for pagination if needed
   const [openSeachTab, setOpenSeachTab] = useState(false);
@@ -48,7 +47,6 @@ const HomePage = () => {
     } else {
       setMediaData(ResData?.data);
     }
-    console.log(ResData);
   }
 
   const loadMoreFiles = async () => {
@@ -98,7 +96,13 @@ const HomePage = () => {
           content="Learn about GetURI - the user can access to all uploaded media and Copy and download other's Media"
         />
       </Helmet>
-      <section className="w-full min-h-screen px-5 py-10 sm:px-10">
+      <section
+        style={{
+          background:
+            "radial-gradient(125% 125% at 50% 10%, #fff 40%, #69dae1 100%)",
+        }}
+        className="w-full min-h-screen px-5 py-10 sm:px-10"
+      >
         {MediaData == [] ? (
           <div role="status" aria-live="polite" className="text-center text-xl">
             Loading...

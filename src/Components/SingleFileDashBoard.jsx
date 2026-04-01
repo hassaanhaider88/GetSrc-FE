@@ -5,8 +5,10 @@ import { FaDeleteLeft } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import GetSrcBE from "../../API.js";
 
-const SingleFileInfo = ({ FileData, Length, SelectedTab }) => {
+const SingleFileInfo = ({ FileData, SelectedTab }) => {
   const navigate = useNavigate();
+  const token = localStorage.getItem("getURIUser");
+  if (!token) return navigate("/");
 
   const handleFileDelete = async () => {
     const isConfirmed = window.confirm("Confirm to delete this file?");
@@ -16,7 +18,7 @@ const SingleFileInfo = ({ FileData, Length, SelectedTab }) => {
       console.log(FileData._id);
       const res = await fetch(`${GetSrcBE}/api/file/${FileData._id}`, {
         headers: {
-          Authirization: `Bearer ${localStorage.getItem("getURIUser")}`,
+          Authorization: `Bearer ${token}`,
         },
       });
       const data = await res.json();
@@ -59,7 +61,7 @@ const SingleFileInfo = ({ FileData, Length, SelectedTab }) => {
         className="absolute -top-2 -left-2 bg-[#4ED7DD] text-white text-xs px-2 py-1 rounded-full shadow"
         aria-hidden="true"
       >
-        #{Length}
+        {FileData.IsPrivate ? "Private" : "Public"}
       </span>
 
       {/* Preview & Title */}

@@ -25,6 +25,8 @@ const UploadPage = () => {
 
   const TYPES = ["Images", "Videos", "GIFs"];
   const user = JSON.parse(localStorage.getItem("UserData"));
+  const token = localStorage.getItem("getURIUser");
+  if (!token) return navigate("/");
 
   const handleFileClick = () => fileUploader.current.click();
 
@@ -43,6 +45,11 @@ const UploadPage = () => {
     const response = await axios.post(
       `${GetSrcBE}/api/img-upload/url`,
       payload,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
     );
     if (response.status === 201) return navigate("/dashboard");
 
@@ -129,7 +136,7 @@ const UploadPage = () => {
       const res = await axios.post(`${GetSrcBE}/api/upload-video`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${localStorage.getItem("getURIUser")}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 

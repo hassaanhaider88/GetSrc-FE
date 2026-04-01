@@ -3,6 +3,7 @@ import { IoLinkSharp } from "react-icons/io5";
 import { MdFileDownload } from "react-icons/md";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { toast } from "react-toastify";
+
 const SingleFileHome = ({ FileData, SelectedTab }) => {
   const handleFileDownload = (fileUri) => {
     if (FileData.FileType == "Images") {
@@ -37,7 +38,7 @@ const SingleFileHome = ({ FileData, SelectedTab }) => {
   const handleFileCopy = () => {
     if (FileData.FileType == "Icons") {
       var hostName = window.location.origin;
-      var ImgName = (FileData.img).split('').splice(6).join('')
+      var ImgName = FileData.img.split("").splice(6).join("");
       navigator.clipboard.writeText(` ${hostName}/${ImgName}`);
     } else if (FileData.FileType == "Videos") {
       navigator.clipboard.writeText(FileData.video);
@@ -58,7 +59,7 @@ const SingleFileHome = ({ FileData, SelectedTab }) => {
       }`}
     >
       {/* Media: Image or Video */}
-      {FileData.img ? (
+      {!FileData.video ? (
         <LazyLoadImage
           loading="lazy"
           src={FileData.img}
